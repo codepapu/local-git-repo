@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Cheat Sheet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <div id="github-icon">
+                <i class="fab fa-github"></i>
+            </div>
+            <div id="heading-text">
+                <h1>Git Cheat Sheet</h1>
+            </div>
+        </div>
+        <div class="description">
+            <p>Git is the free and open source distributed version control system that's responsible for everything GitHub related that happens locally on your computer. This cheat sheet features the most important and commonly used Git commands for easy reference.</p>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="setup-tab" data-toggle="tab" href="#setup" role="tab" aria-controls="setup" aria-selected="true">Setup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="init-tab" data-toggle="tab" href="#init" role="tab" aria-controls="init" aria-selected="false">Setup & Init</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="stage-snapshot-tab" data-toggle="tab" href="#stage-snapshot" role="tab" aria-controls="stage-snapshot" aria-selected="false">Stage & Snapshot</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="branch-merge-tab" data-toggle="tab" href="#branch-merge" role="tab" aria-controls="branch-merge" aria-selected="false">Branch & Merge</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="share-update-tab" data-toggle="tab" href="#share-update" role="tab" aria-controls="share-update" aria-selected="false">Share & Update</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tracking-path-changes-tab" data-toggle="tab" href="#tracking-path-changes" role="tab" aria-controls="tracking-path-changes" aria-selected="false">Tracking Path Changes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="temporary-commits-tab" data-toggle="tab" href="#temporary-commits" role="tab" aria-controls="temporary-commits" aria-selected="false">Temporary Commits</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="rewrite-history-tab" data-toggle="tab" href="#rewrite-history" role="tab" aria-controls="rewrite-history" aria-selected="false">Rewrite History</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="inspect-compare-tab" data-toggle="tab" href="#inspect-compare" role="tab" aria-controls="inspect-compare" aria-selected="false">Inspect & Compare</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="ignoring-patterns-tab" data-toggle="tab" href="#ignoring-patterns" role="tab" aria-controls="ignoring-patterns" aria-selected="false">Ignoring Patterns</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="installation-guis-tab" data-toggle="tab" href="#installation-guis" role="tab" aria-controls="installation-guis" aria-selected="false">Installation & GUIs</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="setup" role="tabpanel" aria-labelledby="setup-tab">
+                <h3>Setup</h3>
+                <pre><code>
+git config --global user.name "[firstname lastname]"
+# Set a name that is identifiable for credit when reviewing version history.
+
+git config --global user.email "[valid-email]"
+# Set an email address that will be associated with each commit.
+
+git config --global color.ui auto
+# Set automatic command line coloring for Git for easy reviewing.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="init" role="tabpanel" aria-labelledby="init-tab">
+                <h3>Setup & Init</h3>
+                <pre><code>
+git init
+# Initialize an existing directory as a Git repository.
+
+git clone [url]
+# Retrieve an entire repository from a hosted location via URL.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="stage-snapshot" role="tabpanel" aria-labelledby="stage-snapshot-tab">
+                <h3>Stage & Snapshot</h3>
+                <pre><code>
+git status
+# Show modified files in the working directory, staged for your next commit.
+
+git add [file]
+# Add a file as it looks now to your next commit (stage).
+
+git reset [file]
+# Unstage a file while retaining the changes in the working directory.
+
+git diff
+# Show changes but not yet staged.
+
+git diff --staged
+# Show changes that are staged but not yet committed.
+
+git commit -m "[descriptive message]"
+# Commit your staged content as a new commit snapshot.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="branch-merge" role="tabpanel" aria-labelledby="branch-merge-tab">
+                <h3>Branch & Merge</h3>
+                <pre><code>
+git branch
+# List your branches. A * will appear next to the currently active branch.
+
+git branch [branch-name]
+# Create a new branch at the current commit.
+
+git checkout [branch]
+# Switch to another branch and check it out into your working directory.
+
+git merge [branch]
+# Merge the specified branch’s history into the current branch.
+
+git log
+# Show all commits in the current branch’s history.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="share-update" role="tabpanel" aria-labelledby="share-update-tab">
+                <h3>Share & Update</h3>
+                <pre><code>
+git remote add [alias] [url]
+# Add a Git URL as an alias.
+
+git fetch [alias]
+# Fetch all the branches from the remote repository.
+
+git merge [alias]/[branch]
+# Merge a remote branch into your current branch to bring it up to date.
+
+git push [alias] [branch]
+# Transmit local branch commits to the remote repository branch.
+
+git pull
+# Fetch and merge any commits from the tracking remote branch.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="tracking-path-changes" role="tabpanel" aria-labelledby="tracking-path-changes-tab">
+                <h3>Tracking Path Changes</h3>
+                <pre><code>
+git rm [file]
+# Delete the file from the project and stage the removal for commit.
+
+git mv [existing-path] [new-path]
+# Change an existing file path and stage the move.
+
+git log --stat -M
+# Show all commit logs with indications of any paths that moved.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="temporary-commits" role="tabpanel" aria-labelledby="temporary-commits-tab">
+                <h3>Temporary Commits</h3>
+                <pre><code>
+git stash
+# Save modified and staged changes.
+
+git stash list
+# List stack-order of stashed file changes.
+
+git stash pop
+# Apply the top of the stash stack and remove it from the stash list.
+
+git stash drop
+# Discard the changes from the top of the stash stack.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="rewrite-history" role="tabpanel" aria-labelledby="rewrite-history-tab">
+                <h3>Rewrite History</h3>
+                <pre><code>
+git rebase [branch]
+# Apply any commits of the current branch ahead of the specified branch.
+
+git reset --hard [commit]
+# Clear staging area and rewrite working tree from the specified commit.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="inspect-compare" role="tabpanel" aria-labelledby="inspect-compare-tab">
+                <h3>Inspect & Compare</h3>
+                <pre><code>
+git log
+# Show the commit history for the currently active branch.
+
+git log branchB..branchA
+# Show commits on branchA that are not on branchB.
+
+git log --follow [file]
+# Show commits that changed a file, even across renames.
+
+git diff branchB...branchA
+# Show the diff of what is in branchA but not in branchB.
+
+git show [SHA]
+# Show any object in Git in human-readable format.
+                </code></pre>
+            </div>
+            <div class="tab-pane fade" id="ignoring-patterns" role="tabpanel" aria-labelledby="ignoring-patterns-tab">
+                <h3>Ignoring Patterns</h3>
+                <pre><code>
+git config --global core.excludesfile [file]
+# System-wide ignore pattern for all local repositories.
+                </code></pre>
+                <h4>Example of a .gitignore file:</h4>
+                <pre><code>
+logs/
+*.notes
+pattern*/
+                </code></pre>
+                <p>Save your patterns as <code>.gitignore</code> with either direct string matches or wildcard globs.</p>
+            </div>
+            <div class="tab-pane fade" id="installation-guis" role="tabpanel" aria-labelledby="installation-guis-tab">
+                <h3>Installation & GUIs</h3>
+                <p>With platform-specific installers for Git, GitHub also provides easy updates for the command line tool while providing a GUI for day-to-day interaction, review, and repository synchronization.</p>
+                <ul>
+                    <li><a href="https://windows.github.com" target="_blank">GitHub for Windows</a></li>
+                    <li><a href="https://mac.github.com" target="_blank">GitHub for Mac</a></li>
+                    <li><a href="http://git-scm.com" target="_blank">Git for All Platforms</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            /*
+            Add click event to both GitHub icon and heading text
+            $('#github-icon, #heading-text').click(function() {
+                location.reload(); // Refreshes the page
+            });
+            */
+
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
